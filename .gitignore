@@ -1,0 +1,14 @@
+node_modules/
+.pnpm-store/
+dist/
+.tmp-home/
+*.log
+vite-server.log
+serve_spa.py
+fix_home.py
+install-pw.*
+check-pages.cjs
+check-server.*
+temp_check.mjs
+.DS_Store
+Thumbs.db

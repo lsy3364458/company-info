@@ -1,0 +1,77 @@
+/* === Sub Pages (Products, ENF, About, CraftTour) === */
+
+.subpage__banner {
+  background: var(--primary-gradient);
+  color: white;
+  padding: 80px 20px 60px;
+  text-align: center;
+}
+
+.subpage__banner h1 {
+  font-size: 38px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.subpage__banner p {
+  font-size: 16px;
+  opacity: 0.85;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.subpage__content {
+  padding: 80px 20px 100px;
+  min-height: 40vh;
+}
+
+.subpage__placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 20px;
+  background: var(--warm-white);
+  border-radius: var(--radius-lg);
+  border: 1px dashed var(--warm-border);
+  color: var(--text-light);
+}
+
+.subpage__placeholder svg {
+  margin-bottom: 24px;
+  opacity: 0.5;
+}
+
+.subpage__placeholder h2 {
+  font-size: 22px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.subpage__placeholder p {
+  font-size: 14px;
+  max-width: 360px;
+}
+
+@media (max-width: 768px) {
+  .subpage__banner {
+    padding: 60px 16px 40px;
+  }
+
+  .subpage__banner h1 {
+    font-size: 28px;
+  }
+
+  .subpage__content {
+    padding: 40px 16px 60px;
+  }
+
+  .subpage__placeholder {
+    padding: 40px 16px;
+  }
+
+  .subpage__placeholder h2 {
+    font-size: 18px;
+  }
+}
