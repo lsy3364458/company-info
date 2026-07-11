@@ -1,390 +1,406 @@
-﻿/* === Home Page === */
+/* ===============================================
+   Home — 全屏滚动首页
+   一屏一个模块，JS 翻页控制，Motion 动效
+   简约温馨风格
+   =============================================== */
 
-/* Hero */
-.home__hero {
+/* --- Scroll container --- */
+.home {
+  height: 100vh;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.home::-webkit-scrollbar { display: none; }
+
+/* --- Each section = one viewport --- */
+.home__section {
   position: relative;
-  min-height: 85vh;
+  height: 100vh;
   display: flex;
   align-items: center;
+  justify-content: center;
+  padding: 80px 24px;
   overflow: hidden;
 }
 
-.home__hero-bg {
-  position: absolute;
-  inset: 0;
-  background: var(--primary-gradient);
-  opacity: 0.92;
-  z-index: 0;
+.home__content-wrapper {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
 }
 
-.home__hero-bg::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 80% 50% at 20% 80%, rgba(255,255,255,0.08) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 60% at 80% 20%, rgba(255,255,255,0.06) 0%, transparent 70%);
-  z-index: 1;
-}
-
-.home__hero-content {
-  position: relative;
-  z-index: 2;
-  padding: 120px 20px 100px;
-  color: white;
-}
-
-.home__hero-title {
-  font-size: 56px;
-  font-weight: 800;
-  line-height: 1.2;
+/* --- Section titles (shared) --- */
+.home__section-title {
+  font-size: 38px;
+  font-weight: 700;
+  color: var(--text-primary);
   margin-bottom: 24px;
-  letter-spacing: -1px;
+  letter-spacing: 2px;
 }
 
-.home__hero-title span {
-  display: block;
-  font-weight: 300;
-  font-size: 56px;
-  opacity: 0.9;
+.home__section-title--light {
+  color: var(--text-white);
 }
 
-.home__hero-subtitle {
-  font-size: 18px;
-  line-height: 1.8;
-  opacity: 0.85;
-  margin-bottom: 40px;
-  max-width: 520px;
+/* ===============================================
+   Section 1 — Banner
+   =============================================== */
+.home__banner {
+  background: linear-gradient(135deg, #fce4d6 0%, #f8ede4 40%, #fdf8f3 100%);
 }
 
-.home__hero-actions {
+.home__banner-placeholder {
+  width: 100%;
+  max-width: 720px;
+  height: 360px;
+  background: linear-gradient(135deg, #e8ddd5 0%, #d9cec6 100%);
+  border-radius: 20px;
   display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-/* Buttons */
-.btn {
-  display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 28px;
-  font-size: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+}
+
+.home__banner-label {
+  font-size: 28px;
   font-weight: 600;
-  border-radius: 50px;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  border: 2px solid transparent;
-  text-decoration: none;
+  color: rgba(0, 0, 0, 0.35);
+  letter-spacing: 4px;
 }
 
-.btn--primary {
-  background: white;
+/* ===============================================
+   Section 2 — Brand Introduction
+   =============================================== */
+.home__brand {
+  background: var(--warm-bg);
+}
+
+.home__brand-title {
+  font-size: 56px;
+  font-weight: 300;
   color: var(--primary);
-  border-color: white;
+  letter-spacing: 6px;
+  margin-bottom: 32px;
+  font-family: 'Georgia', 'Times New Roman', serif;
 }
 
-.btn--primary:hover {
-  background: transparent;
-  color: white;
-  border-color: white;
-  box-shadow: none;
-}
-
-.btn--outline {
-  background: transparent;
-  color: white;
-  border-color: rgba(255, 255, 255, 0.5);
-}
-
-.btn--outline:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: white;
-}
-
-.btn--lg {
-  padding: 14px 36px;
-  font-size: 16px;
-}
-
-/* === 浜у搧鎬昏 Section === */
-.home__products {
-  padding: 100px 20px;
-}
-
-.home__section-header {
-  text-align: center;
-  margin-bottom: 60px;
-}
-
-.home__section-header h2 {
-  font-size: 34px;
-  font-weight: 700;
-  color: var(--primary);
-  margin-bottom: 12px;
-}
-
-.home__section-header p {
-  font-size: 16px;
+.home__brand-text {
+  font-size: 17px;
+  line-height: 2;
   color: var(--text-secondary);
+  text-align: left;
+  text-indent: 2em;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* ===============================================
+   Section 3 — Product Overview
+   =============================================== */
+.home__products {
+  background: #f8f4f0;
 }
 
 .home__products-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
+  gap: 24px;
+  margin-top: 16px;
 }
 
 .home__product-card {
   background: var(--warm-white);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
   border: 1px solid var(--warm-border);
-  transition: all 0.35s ease;
-  display: flex;
-  flex-direction: column;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .home__product-card:hover {
   transform: translateY(-6px);
-  box-shadow: var(--shadow-lg);
-  border-color: var(--primary);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
 }
 
 .home__product-img {
-  height: 200px;
-  background: linear-gradient(135deg, var(--primary-light) 0%, #d4e4f7 100%);
+  height: 180px;
+  background: #f5f0eb;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--primary);
-  position: relative;
   overflow: hidden;
-}
+  border-radius: 12px;
+ }
 
-.home__product-img::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 30% 40%, rgba(255,255,255,0.2) 0%, transparent 60%),
-    radial-gradient(circle at 70% 60%, rgba(255,255,255,0.1) 0%, transparent 50%);
-  pointer-events: none;
-}
-
-.home__product-img svg {
-  position: relative;
-  z-index: 1;
-  opacity: 0.7;
+.home__product-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 
 .home__product-info {
-  padding: 28px 24px 32px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+  padding: 20px 20px 24px;
 }
 
 .home__product-info h3 {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
-.home__product-info p {
-  font-size: 14px;
-  color: var(--text-secondary);
-  line-height: 1.7;
-  margin-bottom: 16px;
-  flex: 1;
-}
-
-.home__product-link {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--primary);
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  transition: gap 0.25s ease;
-}
-
-.home__product-link:hover {
-  gap: 8px;
-  color: var(--primary-dark);
-}
-
-/* Features Section */
-.home__features {
-  padding: 100px 20px;
-}
-
-.home__features-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-}
-
-.home__feature-card {
-  background: var(--warm-white);
-  border-radius: var(--radius-lg);
-  padding: 40px 32px;
+.home__product-desc {
   text-align: center;
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--warm-border);
-  transition: all 0.3s ease;
 }
 
-.home__feature-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
-  border-color: var(--primary);
-}
-
-.home__feature-icon {
-  width: 64px;
-  height: 64px;
-  margin: 0 auto 24px;
-  background: var(--primary-light);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--primary);
-}
-
-.home__feature-card h3 {
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 12px;
-  color: var(--text-primary);
-}
-
-.home__feature-card p {
+.home__product-desc p {
   font-size: 14px;
   color: var(--text-secondary);
   line-height: 1.7;
 }
 
-/* CTA Section */
-.home__cta {
-  background: var(--warm-light);
-  padding: 80px 20px;
-  text-align: center;
+.home__product-desc p + p {
+  margin-top: 4px;
 }
 
-.home__cta h2 {
-  font-size: 32px;
-  font-weight: 700;
-  color: var(--primary);
-  margin-bottom: 16px;
+/* ===============================================
+   Section 4 — ENF Philosophy
+   =============================================== */
+.home__enf {
+  background: linear-gradient(135deg, #6b8c9e 0%, #8aa9bb 50%, #a3c0d0 100%);
 }
 
-.home__cta p {
+.home__enf-text {
   font-size: 16px;
-  color: var(--text-secondary);
-  margin-bottom: 36px;
-  max-width: 500px;
+  line-height: 1.9;
+  color: rgba(255, 255, 255, 0.92);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.home__enf-text p + p {
+  margin-top: 16px;
+}
+
+/* ===============================================
+   Section 5 — Charity Lecture
+   =============================================== */
+.home__charity {
+  background: linear-gradient(135deg, #d4a89a 0%, #e0bbb0 50%, #ebc9be 100%);
+}
+
+.home__charity-text {
+  font-size: 17px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 480px;
   margin-left: auto;
   margin-right: auto;
 }
 
-.home__cta .btn--primary {
-  background: var(--primary);
-  color: white;
-  border-color: var(--primary);
+
+
+
+
+/* ===============================================
+   Shared "Learn More" button (Sections 2-4)
+   =============================================== */
+.home__learn-more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 40px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #8a6a5a;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  margin-top: 36px;
 }
 
-.home__cta .btn--primary:hover {
-  background: var(--primary-dark);
-  border-color: var(--primary-dark);
+.home__learn-more-btn:hover {
+  background: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  color: #6b4e40;
 }
 
-/* Mobile */
+.home__learn-more-btn--light {
+  color: #3d6b7e;
+}
+
+.home__learn-more-btn--light:hover {
+  color: #2a4f5e;
+}
+
+
+/* ===============================================
+   Navigation dots (right side)
+   =============================================== */
+.home__nav-dots {
+  position: fixed;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.home__nav-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.home__nav-dot:hover {
+  background: rgba(0, 0, 0, 0.25);
+  border-color: rgba(0, 0, 0, 0.35);
+}
+
+/* ===============================================
+   Responsive — Mobile
+   =============================================== */
 @media (max-width: 768px) {
-  .home__hero {
-    min-height: 70vh;
+  .home__section {
+    padding: 60px 20px;
   }
 
-  .home__hero-content {
-    padding: 100px 16px 80px;
+  .home__section-title {
+    font-size: 28px;
+    margin-bottom: 18px;
   }
 
-  .home__hero-title {
+  /* Banner */
+  .home__banner-placeholder {
+    height: 240px;
+    max-width: 100%;
+    border-radius: 14px;
+  }
+
+  .home__banner-label {
+    font-size: 22px;
+  }
+
+  /* Brand */
+  .home__brand-title {
     font-size: 34px;
+    letter-spacing: 4px;
   }
 
-  .home__hero-title span {
-    font-size: 34px;
+  .home__brand-text {
+    font-size: 15px;
+    max-width: 100%;
   }
 
-  .home__hero-subtitle {
-    font-size: 16px;
-  }
+ /* Products */
+ .home__products-grid {
+   grid-template-columns: 1fr;
+   gap: 16px;
+ }
 
-  .home__hero-actions {
-    flex-direction: column;
-    gap: 12px;
-  }
+.home__product-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+    padding: 2px 0 2px 10px;
+}
 
-  .home__hero-actions .btn {
-    width: 100%;
-    max-width: 280px;
-  }
-
-  .home__products {
-    padding: 60px 16px;
+ /* Product section: compact enough for one screen on mobile */
+  .home__products.home__section {
+    padding-top: 48px;
+    padding-bottom: 48px;
   }
 
   .home__products-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 12px;
   }
 
-  .home__product-img {
-    height: 180px;
+ .home__product-img {
+    width: 90px;
+    min-width: 90px;
+    height: 90px;
+    border-radius: 10px;
+    background: #f5f0eb;
+ }
+
+.home__product-info {
+   flex: 1;
+   min-width: 0;
+   padding: 12px 16px 12px 0;
+    text-align: center;
+}
+
+.home__product-info h3 {
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+ .home__product-desc {
+    text-align: center;
+ }
+
+ .home__product-desc p {
+   font-size: 13px;
+   line-height: 1.5;
+ }
+
+  .home__products .home__learn-more-btn {
+    margin-top: 20px;
+  }
+  /* ENF */
+  .home__enf-text {
+    font-size: 15px;
   }
 
-  .home__features {
-    padding: 60px 16px;
+  /* Charity */
+  .home__charity-text {
+    font-size: 15px;
   }
 
-  .home__section-header h2 {
-    font-size: 26px;
+  /* Learn More button */
+  .home__learn-more-btn {
+    margin-top: 28px;
+    padding: 12px 32px;
+    font-size: 15px;
   }
 
-  .home__features-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
+  /* Nav dots */
+  .home__nav-dots {
+    right: 12px;
+    gap: 10px;
   }
 
-  .home__cta {
-    padding: 60px 16px;
-  }
-
-  .home__cta h2 {
-    font-size: 26px;
+  .home__nav-dot {
+    width: 8px;
+    height: 8px;
   }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
-  .home__hero-title {
-    font-size: 44px;
-  }
-
-  .home__hero-title span {
-    font-size: 44px;
-  }
-
   .home__products-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .home__features-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .home__brand-title {
+    font-size: 44px;
+  }
+
+  .home__banner-placeholder {
+    height: 300px;
   }
 }
-

@@ -9,3 +9,15 @@
   flex: 1;
   margin-top: var(--nav-height);
 }
+
+/* === Home (fullscreen) === */
+.layout--home {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.layout__main--home {
+  margin-top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
